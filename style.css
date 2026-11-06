@@ -1,0 +1,88 @@
+/*Pengatur box model universal */
+* {
+    box-sizing: border-box; /* Memastikan padding dan border tidak menambah ukuran total lebar elemen */
+}
+
+body {
+    margin: 0;                    /* Menghilangkan margin bawaan dari browser */
+    font-family: Arial, sans-serif; /* Mengatur jenis huruf utama halaman */
+    background-color: #f9f9f9;    /* Memberikan warna latar belakang abu-abu terang pada halaman */
+}
+
+/* Menu navigasi */
+header {
+    background-color: #1f4e79;    /* Memberikan warna latar belakang biru gelap pada header */
+    padding: 15px 25px;           /* Memberikan jarak ruang di dalam area header */
+    margin-bottom: 20px;          /* Jarak antara header biru dan galeri di bawahnya */
+}
+
+.menu-navigasi {
+    display: flex;                /* Mengaktifkan mode tata letak Flexbox */
+    flex-direction: row;          /* Menyusun item tautan menu secara mendatar (horizontal) */
+    justify-content: flex-start;  /* Meratakan posisi tautan ke sisi kiri */
+    align-items: center;          /* Menyelajarkan item secara vertikal di tengah */
+    gap: 20px;                    /* Memberikan jarak antar tautan menu sebesar 20px */
+}
+
+.menu-navigasi a {
+    color: white;                 /* Mengubah warna teks tautan menjadi putih */
+    text-decoration: none;        /* Menghilangkan garis bawah bawaan pada tautan */
+    font-weight: bold;            /* Menebalkan teks tautan menu */
+}
+
+.menu-navigasi a:hover {
+    text-decoration: underline;   /* Memunculkan garis bawah saat kursor diarahkan ke tautan */
+}
+
+/* Galeri gambar*/
+main {
+    padding: 0 25px 25px 25px;    /* Mengatur jarak padding pada area konten utama */
+}
+
+.galeri-container {
+        display: grid;                /* Mengaktifkan mode tata letak CSS Grid */
+        grid-template-columns: repeat(3, 1fr); /* Membagi area galeri menjadi 3 kolom sama lebar pada layar besar */
+        gap: 12px;                    /* Menetapkan jarak antar kolom dan baris grid sebesar 12px */
+    }
+
+.item-gambar {
+    width: 100%;                  /* Mengatur lebar kotak kartu agar mengisi penuh kolom */
+    aspect-ratio: 16 / 9;         /* Mengunci perbandingan rasio tinggi dan lebar kotak secara seragam */
+    overflow: hidden;             /* Menyembunyikan bagian gambar yang melewati batas kotak */
+    background-color: #ffffff;    /* Memberikan warna latar belakang putih pada kotak kartu */
+}
+
+.item-gambar img {
+    width: 100%;                  /* Memaksa lebar gambar menyesuaikan 100% lebar kotak */
+    height: 100%;                 /* Memaksa tinggi gambar menyesuaikan 100% tinggi kotak */
+    object-fit: cover;            /* Mengisi penuh kotak secara proporsional tanpa membuat gambar gepeng */
+    display: block;               /* Mengubah elemen gambar menjadi block untuk menghilangkan celah spasi bawah */
+}
+
+/* 1. Untuk layar tablet (lebar maksimal 768px) */
+@media (max-width: 768px) {
+    .galeri-container {
+        grid-template-columns: repeat(2, 1fr); /* Galeri berubah menjadi 2 kolom */
+    }
+}
+
+/* 2. Untuk layar ponsel / smartphone (lebar maksimal 480px) */
+@media (max-width: 480px) {
+    .galeri-container {
+        grid-template-columns: repeat(1, 1fr); /* Galeri berubah menjadi 1 kolom penuh ke bawah */
+    }
+    
+    .menu-navigasi {
+        flex-direction: column;                /* Menu navigasi disusun secara vertikal (menumpuk ke bawah) */
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    header {
+        padding: 15px;
+    }
+    
+    main {
+        padding: 0 15px 15px 15px;             /* Menyesuaikan padding utama agar pas di layar HP */
+    }
+}
